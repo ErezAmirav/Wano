@@ -12,6 +12,6 @@ namespace WanoSivuv3.Models
         public double Price { get; set; }
         public string Desc { get; set; }
         public string Image { get; set; }
-        public Title Title { get; set; }
+        public Category Category { get; set; }
     }
 }
