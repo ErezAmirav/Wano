@@ -15,5 +15,7 @@ namespace WanoSivuv3.Data
         }
 
         public DbSet<WanoSivuv3.Models.Product> Product { get; set; }
+
+        public DbSet<WanoSivuv3.Models.User> User { get; set; }
     }
 }
