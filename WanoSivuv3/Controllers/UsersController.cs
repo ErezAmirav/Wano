@@ -37,7 +37,7 @@ namespace WanoSivuv3.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index),"Home");
             }
             return View(user);
         }
