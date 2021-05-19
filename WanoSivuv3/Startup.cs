@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WanoSivuv3.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WanoSivuv3
 {
@@ -29,6 +30,12 @@ namespace WanoSivuv3
 
             services.AddDbContext<WanoSivuv3Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WanoSivuv3Context")));
+
+            services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(10); });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => 
+            { options.LoginPath = "/Users/Login"; options.AccessDeniedPath = "/Users/AccessDenied"; });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +56,8 @@ namespace WanoSivuv3
 
             app.UseRouting();
 
+            app.UseSession();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -8,7 +8,7 @@ namespace WanoSivuv3.Models
 {
     public class Product
     {
-        //[Key]
+        [Key]
         public int Id { get; set; }
       
         public string Name { get; set; }

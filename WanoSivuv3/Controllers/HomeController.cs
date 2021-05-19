@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -22,9 +24,13 @@ namespace WanoSivuv3.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Privacy()
-        {
+        {/*
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }*/
             return View();
         }
 

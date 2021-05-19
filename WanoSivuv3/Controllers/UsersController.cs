@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +23,61 @@ namespace WanoSivuv3.Controllers
             _context = context;
         }
 
+        // GET: Users/Login
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Users/Login
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("Id,Username,Email,Password")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var q = from u in _context.User
+                        where u.Username == user.Username && u.Password == user.Password
+                        select u;
+                //var q = _context.User.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
+                if (q.Count() > 0)
+                {
+                    //HttpContext.Session.SetString("Username", q.First().Username);
+                    Signin(q.First());
+                    return RedirectToAction(nameof(Index), "Home");
+                }
+                else
+                {
+                    ViewData["Error"] = "Wrong username or password.";
+                }
+            }
+            return View(user);
+        }
+        private async void Signin(User account)
+        {
+            var claims = new List<Claim>
+            { 
+                new Claim(ClaimTypes.Name, account.Username),
+                new Claim(ClaimTypes.Role, account.Type.ToString()),
+            };
+            var claimsIdentity = new ClaimsIdentity(
+                claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties
+            {
+                //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10)
+            };
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+        }
+
 
         // GET: Users/Register
-        public IActionResult Register()
+            public IActionResult Register()
         {
             return View();
         }
@@ -35,9 +91,20 @@ namespace WanoSivuv3.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index),"Home");
+                var q = _context.User.FirstOrDefault(u => u.Username == user.Username);
+                if (q == null)
+                {
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+
+                    var u = _context.User.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
+                    Signin(u);
+                    return RedirectToAction(nameof(Index), "Home");
+                }
+                else
+                {
+                    ViewData["Error"] = "Invalid username";
+                }
             }
             return View(user);
         }
