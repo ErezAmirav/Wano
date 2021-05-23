@@ -33,7 +33,10 @@ namespace WanoSivuv3.Controllers
             }*/
             return View();
         }
-
+        public IActionResult Contact_us()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
