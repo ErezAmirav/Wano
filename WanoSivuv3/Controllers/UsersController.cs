@@ -34,7 +34,7 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("Id,Username,Email,Password")] User user)
+        public IActionResult Login([Bind("Id,Username,Email,Password")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +54,14 @@ namespace WanoSivuv3.Controllers
                 }
             }
             return View(user);
+        }
+        public async Task<IActionResult> Logout()
+        {
+            //HttpContext.Sessions.Clear();
+
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction(nameof(Index), "Home");
         }
         private async void Signin(User account)
         {
