@@ -12,6 +12,12 @@ a {
   color: #0366d6;
 }
 
+
+body{
+    background-color: black;
+    color: white;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
