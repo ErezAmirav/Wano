@@ -24,11 +24,9 @@
 </head>
 <body>
 
-    <!--Default Navbar Start Here-->
-    <!--<nav> tag  start with classes .navbar and .navbar-default and .navbar-fixed-top-->
     <nav class="navbar navbar-expand-lg navbar-fixed-top" id="RedMenu">
         <div class="container-fluid">
-            @*Navbar Header Start Here*@
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainNavBar"
                         style="background-color:#000">
@@ -38,12 +36,12 @@
                 </button>
                 <a class="navbar-brand" style="color:white" href="#">WANO</a>
             </div>
-            @*Navbar Header End Here
-            Menu Start Here*@
+
+
             <div class="collapse navbar-collapse" id="MainNavBar">
                 <ul class="nav navbar-nav navbar-right">
 
-                   
+
                     <li class="nav-item">
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Delivery</a>
                     </li>
@@ -59,6 +57,10 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Contact Us</a>
                     </li>
+            </div>
+            </ul>
+            <div align="right">
+                <ul class="nav navbar-nav navbar-right">
                     @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
                     {
                         <li class="nav-item">
@@ -72,44 +74,10 @@
                         </li>
                     }
                 </ul>
-</div>
-            @*Menu End Here*@
+            </div>
         </div>
     </nav>
-    <!--<nav> tag end-->
-    @*<header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WanoSivuv3</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                            @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>*@
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
