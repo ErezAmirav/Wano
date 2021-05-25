@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,6 +24,10 @@ namespace WanoSivuv3.Controllers
             _context = context;
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
         // GET: Users/Login
         public IActionResult Login()
         {
@@ -75,7 +80,7 @@ namespace WanoSivuv3.Controllers
 
             var authProperties = new AuthenticationProperties
             {
-                //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10)
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10)
             };
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
@@ -118,8 +123,9 @@ namespace WanoSivuv3.Controllers
         }
 
 
-        /*
+
         // GET: Users
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
@@ -142,7 +148,7 @@ namespace WanoSivuv3.Controllers
 
             return View(user);
         }
-
+        /*
         // GET: Users/Create
         public IActionResult Create()
         {
@@ -164,8 +170,9 @@ namespace WanoSivuv3.Controllers
             }
             return View(user);
         }
-
+        */
         // GET: Users/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -186,6 +193,7 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,Password,Type")] User user)
         {
             if (id != user.Id)
@@ -217,6 +225,7 @@ namespace WanoSivuv3.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -237,6 +246,7 @@ namespace WanoSivuv3.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var user = await _context.User.FindAsync(id);
@@ -249,6 +259,6 @@ namespace WanoSivuv3.Controllers
         {
             return _context.User.Any(e => e.Id == id);
         }
-    }*/
     }
+    
 }
