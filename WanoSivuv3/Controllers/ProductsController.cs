@@ -60,6 +60,7 @@ namespace WanoSivuv3.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -153,4 +154,5 @@ namespace WanoSivuv3.Controllers
             return _context.Product.Any(e => e.Id == id);
         }
     }
+
 }

@@ -13,9 +13,11 @@ namespace WanoSivuv3.Models
 
         [Required (ErrorMessage ="Please enter a name.")]
         [StringLength(100)]
+        [RegularExpression("^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Invalid name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter Price.")]
+        [DataType(DataType.Currency)]
         public double Price { get; set; }
 
         [Required(ErrorMessage = "Please enter a Description.")]
@@ -24,6 +26,7 @@ namespace WanoSivuv3.Models
 
         [Required(ErrorMessage = "Please insert a Image.")]
         [Display(Name ="Images")]
+        [DataType(DataType.ImageUrl)]
         public string Image { get; set; }
         
         public Category Category { get; set; }

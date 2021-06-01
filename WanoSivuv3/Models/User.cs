@@ -16,7 +16,10 @@ namespace WanoSivuv3.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [RegularExpression("^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Invalid name")]
         public string Username { get; set; }
+        //[Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
