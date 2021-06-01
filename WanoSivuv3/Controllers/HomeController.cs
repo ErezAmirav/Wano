@@ -46,5 +46,13 @@ namespace WanoSivuv3.Controllers
         {
             return View();
         }
+        public IActionResult Gallery()
+        {
+            return View();
+        }
+        public IActionResult Menu()
+        {
+            return View();
+        }
     }
 }
