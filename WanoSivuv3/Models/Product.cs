@@ -27,7 +27,7 @@ namespace WanoSivuv3.Models
 
         [Required(ErrorMessage = "Please insert a Image.")]
         [Display(Name ="Images")]
-        [DataType(DataType.ImageUrl)]
+        //[DataType(DataType.ImageUrl)]
         public string Image { get; set; }
 
         public Category Category { get; set; }

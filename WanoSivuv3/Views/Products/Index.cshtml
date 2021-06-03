@@ -9,7 +9,26 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+
+
+<div class="container">
+    <div class="row">
+
+        @foreach(var product in Model)
+            {
+                <div id="productIdo" class="card text-center">
+                    <img src="@product.Image" width=""/>
+                    <div class="card-body">
+                        <p class="text-center">@product.Name</p>
+                    </div>
+                </div>
+            }
+
+    </div>
+</div>
+
+
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -50,4 +69,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
