@@ -14,7 +14,7 @@ namespace WanoSivuv3.Models
 
         [Required (ErrorMessage ="Please enter a name.")]
         [StringLength(100)]
-        [RegularExpression("^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Invalid name")]
+        [RegularExpression("^[A-Z_ ]+[a-zA-Z_ ]*$", ErrorMessage = "Invalid name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter Price.")]
