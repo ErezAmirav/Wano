@@ -46,6 +46,7 @@ namespace WanoSivuv3.Controllers
         // GET: Categories/Create
         public IActionResult Create()
         {
+            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             return View();
         }
 
@@ -54,10 +55,13 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Category category, int[] myProducts)
         {
             if (ModelState.IsValid)
             {
+                category.myProducts = new List<Product>();
+                category.myProducts.AddRange(_context.Product.Where(x => myProducts.Contains(x.Id)));
+
                 _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
