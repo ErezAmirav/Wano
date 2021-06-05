@@ -82,6 +82,7 @@ namespace WanoSivuv3.Controllers
             {
                 return NotFound();
             }
+            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             return View(category);
         }
 
@@ -90,7 +91,7 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category ,int[] myProducts)
         {
             if (id != category.Id)
             {
@@ -101,6 +102,8 @@ namespace WanoSivuv3.Controllers
             {
                 try
                 {
+                    category.myProducts = new List<Product>();
+                    category.myProducts.AddRange(_context.Product.Where(x => myProducts.Contains(x.Id)));
                     _context.Update(category);
                     await _context.SaveChangesAsync();
                 }

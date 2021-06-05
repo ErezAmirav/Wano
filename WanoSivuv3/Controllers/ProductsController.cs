@@ -57,11 +57,11 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image")] Product product) //po mosifim CategoryId she ze istader
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image")] Product product, Category category) //po mosifim CategoryId she ze istader
         {
             if (ModelState.IsValid)
             {
-
+                //product.Category = category;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -83,6 +83,7 @@ namespace WanoSivuv3.Controllers
             {
                 return NotFound();
             }
+            ViewData["Categoriess"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.Name));
             return View(product);
         }
 
