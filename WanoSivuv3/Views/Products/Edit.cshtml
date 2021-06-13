@@ -39,6 +39,11 @@
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="myTags" class="control-label"></label>
+                <select asp-for="myTags" class="form-control" asp-items="@ViewBag.Tagss"></select>
+                <span asp-validation-for="myTags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

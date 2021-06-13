@@ -19,5 +19,7 @@ namespace WanoSivuv3.Data
         public DbSet<WanoSivuv3.Models.User> User { get; set; }
 
         public DbSet<WanoSivuv3.Models.Category> Category { get; set; }
+
+        public DbSet<WanoSivuv3.Models.Tags> Tags { get; set; }
     }
 }
