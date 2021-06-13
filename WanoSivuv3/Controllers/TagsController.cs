@@ -79,6 +79,7 @@ namespace WanoSivuv3.Controllers
             {
                 return NotFound();
             }
+            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             return View(tags);
         }
 
@@ -114,6 +115,7 @@ namespace WanoSivuv3.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             return View(tags);
         }
 

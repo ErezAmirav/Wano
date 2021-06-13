@@ -24,7 +24,9 @@ namespace WanoSivuv3.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            var WanoSivuv3Context = _context.Product.Include(a => a.Category);
+            //return View(await _context.Product.ToListAsync());
+            return View(await WanoSivuv3Context.ToListAsync());
         }
 
         // GET: Products/Details/5
