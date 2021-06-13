@@ -3,10 +3,10 @@ for details on configuring this project to bundle and minify static web assets. 
 
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  background-color: darkred;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    background-color: darkred;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
@@ -30,7 +30,7 @@ body{
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     /*color: #fff;*/
     color: black;
-    background-color: #1b6ec2;
+    background-color: darkred;
     border-color: #1861ac;
 }
 
