@@ -46,7 +46,7 @@ namespace WanoSivuv3.Controllers
         // GET: Categories/Create
         public IActionResult Create()
         {
-            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
+            ViewData["Productss"] = new SelectList(_context.Product.Where(x => x.CategoryId == null), nameof(Product.Id), nameof(Product.Name));
             return View();
         }
 

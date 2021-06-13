@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,23 +10,22 @@ using WanoSivuv3.Models;
 
 namespace WanoSivuv3.Controllers
 {
-    public class ProductsController : Controller
+    public class TagsController : Controller
     {
         private readonly WanoSivuv3Context _context;
 
-        public ProductsController(WanoSivuv3Context context)
+        public TagsController(WanoSivuv3Context context)
         {
             _context = context;
         }
 
-        // GET: Products
-        [Authorize(Roles = "Admin")]
+        // GET: Tags
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            return View(await _context.Tags.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Tags/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,43 +33,40 @@ namespace WanoSivuv3.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var tags = await _context.Tags
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (tags == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(tags);
         }
 
-        // GET: Products/Create
+        // GET: Tags/Create
         public IActionResult Create()
         {
-            ViewData["Categoriess"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.Name));
-            ViewData["Tagss"] = new SelectList(_context.Tags, nameof(Tags.Id), nameof(Tags.Name));
-
+            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Tags/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image,CategoryId,Tags")] Product product) //po mosifim CategoryId she ze istader
+        public async Task<IActionResult> Create([Bind("Id,Name,ProductsId")] Tags tags)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(tags);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["CategoryId"] = new SelectList(_context.Set<Category>(), "Id", "Id", Product.Category);
-            return View(product);
+            return View(tags);
         }
 
-        // GET: Products/Edit/5
+        // GET: Tags/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,23 +74,22 @@ namespace WanoSivuv3.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
-            if (product == null)
+            var tags = await _context.Tags.FindAsync(id);
+            if (tags == null)
             {
                 return NotFound();
             }
-            ViewData["Categoriess"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.Name));
-            return View(product);
+            return View(tags);
         }
 
-        // POST: Products/Edit/5
+        // POST: Tags/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Desc,Image")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Tags tags)
         {
-            if (id != product.Id)
+            if (id != tags.Id)
             {
                 return NotFound();
             }
@@ -104,12 +98,12 @@ namespace WanoSivuv3.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(tags);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!TagsExists(tags.Id))
                     {
                         return NotFound();
                     }
@@ -120,11 +114,10 @@ namespace WanoSivuv3.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Categoriess"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.Name));
-            return View(product);
+            return View(tags);
         }
 
-        // GET: Products/Delete/5
+        // GET: Tags/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,31 +125,30 @@ namespace WanoSivuv3.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var tags = await _context.Tags
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (tags == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(tags);
         }
 
-        // POST: Products/Delete/5
+        // POST: Tags/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Product.FindAsync(id);
-            _context.Product.Remove(product);
+            var tags = await _context.Tags.FindAsync(id);
+            _context.Tags.Remove(tags);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool TagsExists(int id)
         {
-            return _context.Product.Any(e => e.Id == id);
+            return _context.Tags.Any(e => e.Id == id);
         }
     }
-
 }

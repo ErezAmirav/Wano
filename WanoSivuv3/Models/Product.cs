@@ -30,7 +30,9 @@ namespace WanoSivuv3.Models
         //[DataType(DataType.ImageUrl)]
         public string Image { get; set; }
         public Category Category { get; set; }
-        //public int CategoryId { get; set; }
+        [Display(Name = "Category")]
+        public int CategoryId { get; set; }
+        [Display(Name = "Tags")]
         public List<Tags> myTags { get; set; }
     }
 }
