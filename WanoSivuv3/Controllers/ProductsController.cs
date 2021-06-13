@@ -61,15 +61,16 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image,CategoryId,Tags")] Product product) //po mosifim CategoryId she ze istader
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image,CategoryId,Tags")] Product product, int[] myTags) //po mosifim CategoryId she ze istader
         {
+            product.myTags = new List<Tags>();
+            product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
             if (ModelState.IsValid)
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["CategoryId"] = new SelectList(_context.Set<Category>(), "Id", "Id", Product.Category);
             return View(product);
         }
 
@@ -87,6 +88,7 @@ namespace WanoSivuv3.Controllers
                 return NotFound();
             }
             ViewData["Categoriess"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.Name));
+            ViewData["Tagss"] = new SelectList(_context.Tags, nameof(Tags.Id), nameof(Tags.Name));
             return View(product);
         }
 
@@ -123,6 +125,7 @@ namespace WanoSivuv3.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Categoriess"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.Name));
+            ViewData["Tagss"] = new SelectList(_context.Tags, nameof(Tags.Id), nameof(Tags.Name));
             return View(product);
         }
 

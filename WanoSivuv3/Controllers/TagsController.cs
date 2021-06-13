@@ -88,8 +88,10 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Tags tags)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Tags tags, int[] myProducts)
         {
+            tags.myProducts = new List<Product>();
+            tags.myProducts.AddRange(_context.Product.Where(x => myProducts.Contains(x.Id)));
             if (id != tags.Id)
             {
                 return NotFound();
