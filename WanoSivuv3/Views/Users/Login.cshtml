@@ -4,11 +4,10 @@
     ViewData["Title"] = "Login";
     Layout = "_LoginLayout";
 }
-
-<h1>Login to Wano resturant</h1>
+<head><link rel="stylesheet" href="~/css/loginpage.css"></head>
 
 <hr />
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -32,12 +31,40 @@
         <div class="text-danger">@ViewBag.Error </div>
         }
     </div>
-</div>
+</div>*@
 
-<div>
-    Not part of the family? <a asp-action="Register">Click here</a> to join.
-</div>
 
+<div id="login-box">
+    <div class="left">
+        <h1>Login</h1>
+        <form asp-action="Login">
+
+            <input asp-for="Username" class="form-control" placeholder="Username" />
+            <input asp-for="Password" class="form-control" placeholder="Password" />
+            <input type="submit" value="Login" class="btn btn-primary" />
+
+            <div>
+                <br />
+                Not part of the family ?<br />
+                <a asp-action="Register">Click here</a> to join.
+            </div>
+
+        </form>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="text-danger">@ViewBag.Error </div>
+        }
+    </div>
+
+    <div class="right">
+        <span class="loginwith">Sign in with<br />social network</span>
+
+        <button class="social-signin facebook">Log in with facebook</button>
+        
+    </div>
+    <div class="or">OR</div>
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
