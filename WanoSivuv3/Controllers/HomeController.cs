@@ -54,5 +54,9 @@ namespace WanoSivuv3.Controllers
         {
             return View();
         }
+        public IActionResult Reservation()
+        {
+            return View();
+        }
     }
 }

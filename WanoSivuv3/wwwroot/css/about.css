@@ -1,0 +1,11 @@
+﻿
+.aboutwall {
+    background: url("https://i.ibb.co/qr7JSXb/199787363-4365141293549477-5593701837490987339-n.jpg") fixed bottom;
+}
+
+.textabout{
+    background-color:white;
+    display: table;
+    margin:auto;
+    border-radius:25px;
+}
