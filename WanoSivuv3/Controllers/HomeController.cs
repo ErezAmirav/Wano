@@ -58,5 +58,9 @@ namespace WanoSivuv3.Controllers
         {
             return View();
         }
+        public IActionResult Team()
+        {
+            return View();
+        }
     }
 }

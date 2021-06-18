@@ -2,15 +2,15 @@
 
 @{
     ViewData["Title"] = "Register";
-    Layout = "_LoginLayout";
+    //Layout = "_LoginLayout";
 }
-<head>
-    <link rel="stylesheet" href="~/css/loginpage.css">
-</head>
-<h1>Register to Wano resturant</h1>
+<head><link rel="stylesheet" href="~/css/loginpage.css"></head>
+
+    
+
 
 <hr />
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -39,46 +39,50 @@
         <div class="text-danger">@ViewBag.Error </div>
         }
     </div>
-</div>
+</div>*@
 
 <div id="login-box">
     <div class="left">
         <h1>Sign up</h1>
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-
-                <input asp-for="Username" class="form-control" placeholder="Username" />
-
+                <input asp-for="Username" class="form-control" placeholder="Username" type="text" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-
-                <input asp-for="Email" class="form-control" placeholder="E-mail"  />
-
+                <input asp-for="Email" class="form-control" placeholder="E-mail" type="text" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-
-                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <input asp-for="Password" class="form-control" placeholder="Password" type="password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
-</div>
+            </div>
 
-
-                <input type="submit" value="Register" class="btn btn-primary" />
+            <input type="submit" value="Register" class="btn btn-primary" />
+            <div>
+                <br />
+                Already a member ?<br /><a asp-action="Login">Click here</a> to login.
+            </div>
         </form>
+        @if (ViewBag.Error != null)
+        {
+            <div class="text-danger">@ViewBag.Error </div>
+        }
     </div>
     
     <div class="right">
-        <span class="loginwith">Sign in with<br />social network</span>
+        <br /><br /><br /><br /><br /><br />
+        @*<span class="loginwith">Sign in with<br />social network</span>*@
         <button class="social-signin facebook">Log in with facebook</button>
     </div>
     <div class="or">OR</div>
 </div>
 
-<div>
-    Already a member? <a asp-action="Login">Click here</a> to login
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
