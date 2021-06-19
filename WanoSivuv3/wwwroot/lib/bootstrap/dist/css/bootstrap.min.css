@@ -1928,10 +1928,22 @@ pre {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid;
-    border-bottom: .3em solid;;
+    border: 0px hidden;
+    border-bottom: .1em solid;;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+    /*display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #AAA;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;*/
 }
 
 @media (prefers-reduced-motion:reduce) {
