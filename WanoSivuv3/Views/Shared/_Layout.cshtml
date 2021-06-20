@@ -38,15 +38,15 @@
                     <li><a href="/Home/Contact_us">Contact<span class="underline"></span></a></li>
                     @if (Context.User.IsInRole("Admin"))
                     {
-                        <li><a asp-controller="Products" asp-action="Index">Products</a></li>
+                        <li><a asp-controller="Products" asp-action="Index">Products<span class="underline"></span></a></li>
                     }
                     @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
                     {
-                        <li><a asp-controller="Users" asp-action="Logout">Logout</a></li>
+                        <li><a asp-controller="Users" asp-action="Logout">Logout<span class="underline"></span></a></li>
                     }
                     else
                     {
-                        <li class="nav-item"><a asp-controller="Users" asp-action="Login">Login</a></li>
+                        <li class="nav-item"><a asp-controller="Users" asp-action="Login">Login<span class="underline"></span></a></li>
                     }
                 </ul>
 
@@ -67,7 +67,7 @@
         <h2>WANO</h2>
         <div><i class="fas fa-asterisk"></i></div>
     </div>
-    <div class="contact-container">
+    @*<div class="contact-container">
         <div class="social-media">
             <h3>Follow Along</h3>
             <div class="links">
@@ -84,7 +84,7 @@
                 <i class="fas fa-envelope"></i>
             </form>
         </div>
-    </div>
+    </div>*@
 </footer>
 <div class="copyright">
     

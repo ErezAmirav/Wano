@@ -7,5 +7,13 @@
     background-color:white;
     display: table;
     margin:auto;
-    border-radius:25px;
+    border-radius:2px;
+    opacity:95%;
+}
+
+.wanologo {
+    /*   background-image: url("https://i.ibb.co/JpYmGjd/WANO-logo.png");
+    height: 213px;
+    width: 538px;*/
+
 }
