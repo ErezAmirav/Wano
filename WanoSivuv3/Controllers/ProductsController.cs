@@ -33,9 +33,9 @@ namespace WanoSivuv3.Controllers
             var WanoSivuv3Context = _context.Product.Include(c => c.Category);
             return View(await WanoSivuv3Context.ToListAsync());
         }
-        public async Task<IActionResult> Search(string queryN, string queryD)
+        public async Task<IActionResult> Search(string queryN/*, string queryD*/)
         {
-            var WanoSivuv3Context = _context.Product.Include(c => c.Category).Where(p => p.Name.Contains(queryN) || (queryN==null) && (p.Desc.Contains(queryD)) || (queryD == null));
+            var WanoSivuv3Context = _context.Product.Include(c => c.Category).Where(p => p.Name.Contains(queryN) || (queryN==null) && (p.Desc.Contains(queryN))/* || (queryD == null)*/);
             return View("Menu",await WanoSivuv3Context.ToListAsync());
         }
 
