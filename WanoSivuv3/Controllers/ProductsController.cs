@@ -75,8 +75,8 @@ namespace WanoSivuv3.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image,CategoryId,Tags")] Product product, int[] myTags) //po mosifim CategoryId she ze istader
         {
-            product.myTags = new List<Tags>();
-            product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+           /* product.myTags = new List<Tags>();
+            product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));*/
             if (ModelState.IsValid)
             {
                 _context.Add(product);
@@ -111,7 +111,7 @@ namespace WanoSivuv3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Desc,Image")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Desc,Image,CategoryId,Tags")] Product product)
         {
             if (id != product.Id)
             {
