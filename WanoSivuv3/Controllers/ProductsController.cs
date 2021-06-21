@@ -24,18 +24,18 @@ namespace WanoSivuv3.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            var WanoSivuv3Context = _context.Product.Include(a => a.Category);
+            var WanoSivuv3Context = _context.Product.Include(c => c.Category);
             return View(await WanoSivuv3Context.ToListAsync());
             //return View(await _context.Product.ToListAsync());
         }
         public async Task<IActionResult> Menu()
         {
-            var WanoSivuv3Context = _context.Product.Include(a => a.Category);
+            var WanoSivuv3Context = _context.Product.Include(c => c.Category);
             return View(await WanoSivuv3Context.ToListAsync());
         }
-        public async Task<IActionResult> Search(string query)
+        public async Task<IActionResult> Search(string queryN, string queryD)
         {
-            var WanoSivuv3Context = _context.Product.Include(a => a.Category).Where(a => a.Name.Contains(query) || (query==null));
+            var WanoSivuv3Context = _context.Product.Include(c => c.Category).Where(p => p.Name.Contains(queryN) || (queryN==null) && (p.Desc.Contains(queryD)) || (queryD == null));
             return View("Menu",await WanoSivuv3Context.ToListAsync());
         }
 
@@ -47,7 +47,7 @@ namespace WanoSivuv3.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var product = await _context.Product.Include(c => c.Category).Include(t => t.myTags)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
