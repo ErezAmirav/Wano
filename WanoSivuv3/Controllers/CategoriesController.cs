@@ -33,7 +33,7 @@ namespace WanoSivuv3.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
+            var category = await _context.Category.Include(p => p.myProducts)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {
