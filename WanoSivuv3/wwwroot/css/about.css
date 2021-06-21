@@ -3,12 +3,13 @@
     background: url("https://i.ibb.co/qr7JSXb/199787363-4365141293549477-5593701837490987339-n.jpg") fixed bottom;
 }
 
-.textabout{
-    background-color:white;
+.textabout {
+    background-color: white;
     display: table;
-    margin:auto;
-    border-radius:2px;
-    opacity:95%;
+    margin: auto;
+    border-radius: 2px;
+    opacity: 95%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .wanologo {

@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Menu";
 }
+<head>
+    <link rel="stylesheet" href="~/css/menu.css">
+</head>
 
 <h1>Welcome to Wano-Sushi menu</h1>
 
@@ -31,34 +34,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desc)
-            </td>
-            <th>
-                @Html.DisplayNameFor(modelItem => item.Category.Name)
-            </th>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desc)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(modelItem => item.Category.Name)
+                </th>
+                <td>
 
-                <div class="container">
-                    <div class="row">
-                        <div id="productIdo" class="card text-center">
-                            <img src="@item.Image" width="100" />
-                            <div class="card-body">
-                                @*<p class="text-center">@item.Name</p>*@   <!-- don't need the item name on the picture -->
+                    <div class="container">
+                        <div class="row">
+                            <div id="productIdo" class="card text-center">
+                                <img src="@item.Image" width="100" />
+                                <div class="card-body">
+                                    @*<p class="text-center">@item.Name</p>*@   <!-- don't need the item name on the picture -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
