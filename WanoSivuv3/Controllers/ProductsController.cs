@@ -32,13 +32,11 @@ namespace WanoSivuv3.Controllers
         {
             var WanoSivuv3Context = _context.Product.Include(a => a.Category);
             return View(await WanoSivuv3Context.ToListAsync());
-            //return View(await _context.Product.ToListAsync());
         }
         public async Task<IActionResult> Search(string query)
         {
             var WanoSivuv3Context = _context.Product.Include(a => a.Category).Where(a => a.Name.Contains(query) || (query==null));
             return View("Menu",await WanoSivuv3Context.ToListAsync());
-            //return View(await _context.Product.ToListAsync());
         }
 
         // GET: Products/Details/5
