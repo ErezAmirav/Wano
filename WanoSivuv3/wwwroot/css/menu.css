@@ -1,6 +1,15 @@
 ﻿.menuTitle {
     width: max-content;
     margin: auto;
+    font-family: "Source Code Pro", sans-serif;
+}
+.ourTitle {
+    width: max-content;
+    font-family: 'Herr Von Muellerhoff', cursive;
+    font-size: 100px;
+    font-weight: normal;
+    margin: 0 80px -55px;
+    color: #a96700;
 }
 
 .table {
