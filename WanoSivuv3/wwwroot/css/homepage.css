@@ -1342,4 +1342,15 @@ footer {
         padding: 60px 0 60px 20px;
     }
 }
-/*End Home Page Responsive*/
+
+#to-top {
+    position: absolute;
+    right: 20px;
+    width: 50px;
+    bottom: 20px;
+    cursor: pointer;
+    padding: 10px 15px;
+    background: #a96700;
+    font-weight: bold;
+    color: #ffffff;
+}
