@@ -1344,7 +1344,7 @@ footer {
 }
 
 #to-top {
-    position: absolute;
+    margin:auto;
     right: 20px;
     width: 50px;
     bottom: 20px;
