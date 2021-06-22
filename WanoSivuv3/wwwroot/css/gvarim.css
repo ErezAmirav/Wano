@@ -27,6 +27,7 @@
     text-align: center;
     overflow: hidden;
     position: relative;
+    border-radius: 3px;
 }
 
     .our-team .picture {
