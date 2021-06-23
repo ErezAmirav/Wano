@@ -1,5 +1,4 @@
-﻿
-$(function () {
+﻿$(function () {
     // previous detection logic
 
     $("#to-top").on("click", function () {
