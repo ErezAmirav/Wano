@@ -1,0 +1,169 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    color: #4E4D54;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*   outline: 1px solid black; */
+}
+
+/* Main Structure
+----------------------- */
+
+.reservation-menu {
+    box-shadow: 0px 28px 100px 17px rgba(0,0,0,0.20);
+    /*   height: 600px; */
+    margin: auto;
+    padding: 50px 0;
+    position: relative;
+    width: 430px;
+    
+}
+
+.container {
+    margin: 0 auto;
+    background: white;
+    padding-bottom: inherit;
+}
+
+/* Text
+----------------------- */
+
+.text {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+/* Header
+----------------------- */
+
+.icons-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__back {
+    font-size: 2.7em;
+}
+
+.header__search {
+    font-size: 2em;
+}
+
+.header__venue-image {
+    border-radius: 50%;
+    box-shadow: 0px 5px 16px -1px #4E4D54;
+    display: block;
+    /*   height: 100px; */
+    margin: 0 auto;
+    position: relative;
+    top: -15px;
+    width: 115px;
+}
+
+.header__venue-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Reservation Section
+----------------------- */
+
+.reservation {
+    margin-top: 50px;
+    text-align: center;
+    display: contents;
+}
+
+.reservation__table-select {
+    display: flex;
+    justify-content: space-around;
+}
+
+.reservation__btn {
+    background: none;
+    border: none;
+    font-size: 40px;
+    font-weight: 900;
+    transition: .1s ease;
+}
+
+    .reservation__btn:active {
+        transform: translateY(3px);
+    }
+
+    .reservation__btn:focus {
+        outline: none;
+    }
+
+.reservation__btn--disabled {
+    opacity: .5;
+}
+
+.reservation__qty {
+    font-size: 80px;
+    font-weight: 900;
+}
+
+.reservation__datechoice {
+    margin-bottom: 35px;
+}
+
+.reservation__datetime {
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: -10px;
+    font-size: 1.6em;
+    font-weight: 700;
+    letter-spacing: -2px;
+    transition: .3s ease;
+    
+}
+
+    .reservation__datetime:focus {
+        outline: none;
+    }
+
+.reservation__confirm {
+    background: #4E4D54;
+    border: none;
+    box-shadow: 0px 9px 21px 3px rgba(0, 0, 0, 0.48);
+    color: white;
+    font-size: 17px;
+    text-transform: uppercase;
+    width: 100%;
+    height: 80px;
+    transition: transform .2s ease;
+}
+
+    .reservation__confirm:active {
+        transform: translateY(5px);
+    }
+
+    .reservation__confirm:focus {
+        outline: none;
+    }
+body {
+    background: url("https://i.ibb.co/qr7JSXb/199787363-4365141293549477-5593701837490987339-n.jpg") fixed bottom;
+}
+
+.about-us .text, .reservation .text {
+    flex: 50%;
+    padding: 40px 0 0;
+}
+
+.reservation__datetime text{
+    width: 130px;
+}
+
+.noteMade{
+    font-size:12px;
+}
