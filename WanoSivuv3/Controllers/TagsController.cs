@@ -55,8 +55,10 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ProductsId")] Tags tags)
+        public async Task<IActionResult> Create([Bind("Id,Name,myProducts")] Tags tags , int[] myProducts)
         {
+            tags.myProducts = new List<Product>();
+            tags.myProducts.AddRange(_context.Product.Where(x => myProducts.Contains(x.Id)));
             if (ModelState.IsValid)
             {
                 _context.Add(tags);
@@ -88,10 +90,10 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ProductsId")] Tags tags, int[] myProducts)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,myProducts")] Tags tags, int[] myProducts)
         {
-            //tags.myProducts = new List<Product>();
-            //tags.myProducts.AddRange(_context.Product.Where(x => myProducts.Contains(x.Id)));
+            /*tags.myProducts = new List<Product>();
+            tags.myProducts.AddRange(_context.Product.Where(x => myProducts.Contains(x.Id)));*/
             if (id != tags.Id)
             {
                 return NotFound();
@@ -117,7 +119,7 @@ namespace WanoSivuv3.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
+            //ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             return View(tags);
         }
 

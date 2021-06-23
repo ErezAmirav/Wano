@@ -73,10 +73,10 @@ namespace WanoSivuv3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image,CategoryId,Tags")] Product product, int[] myTags) //po mosifim CategoryId she ze istader
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,Desc,Image,CategoryId,myTags")] Product product, int[] myTags) //po mosifim CategoryId she ze istader
         {
-           /* product.myTags = new List<Tags>();
-            product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));*/
+            product.myTags = new List<Tags>();
+            product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
             if (ModelState.IsValid)
             {
                 _context.Add(product);
@@ -111,19 +111,50 @@ namespace WanoSivuv3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Desc,Image,CategoryId,Tags")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Desc,Image,CategoryId,myTags")] Product product, int[] myTags)
         {
             if (id != product.Id)
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
+                    /* if (product.myTags == null)
+                     {
+                         product.myTags = new List<Tags>();
+                         product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+                         _context.Update(product);
+                         await _context.SaveChangesAsync();
+                     }*/
+                    //else
+                    // {
+                    //_context.Remove(product.myTags);
+                    //product = _context.Tags.Include(t => t.Id)
+                    /************ Product pro = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
+                 _context.Remove(pro);
+                 _context.SaveChanges();*********/
+                    /*var harta = _context.Product.
+                    Include(p => p.myTags).l*/
+                    //product.myTags = pro.myTags.Where(p => myTags.Contains(p.Id)).ToList();
+                    /*foreach (var item in product.myTags)
+                    {
+                        //product.myTags.();
+                        _context.SaveChanges();
+                    }*/
+                    //product.myTags = new List<Tags>();
+                    var noder = _context.Product.Where(a => a.myTags.Any(t => t.Id == a.Id)).ToList();
+                    var prod = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
+                    var tagi = _context.Tags.Include(t => t.myProducts).FirstOrDefault();//(t =>t.Id.CompareTo(myTags));
+                    //var lodea = _context.Product.Include(p => p.myTags).GroupBy(x => new { x.Id, x.myTags});
+                    product.myTags = new List<Tags>();
+                    product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
                     _context.Update(product);
-                    await _context.SaveChangesAsync();
+                        /* product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+                         _context.Update(product);*/
+                        await _context.SaveChangesAsync();
+                   // }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -138,8 +169,6 @@ namespace WanoSivuv3.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Categoriess"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.Name));
-            ViewData["Tagss"] = new SelectList(_context.Tags, nameof(Tags.Id), nameof(Tags.Name));
             return View(product);
         }
 
