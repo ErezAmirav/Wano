@@ -18,10 +18,7 @@ namespace WanoSivuv3.Models
         [Required]
         [RegularExpression("^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Invalid name")]
         public string Username { get; set; }
-        //[Required]
-        //[DataType(DataType.EmailAddress)]
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Invalid email address")]
-
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]

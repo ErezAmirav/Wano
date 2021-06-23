@@ -3,9 +3,7 @@
     ViewData["Title"] = "Gallery";
 }
 <head>
-    
-        <link rel="stylesheet" href="~/css/gallery.css">
-    
+    <link rel="stylesheet" href="~/css/gallery.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
@@ -20,29 +18,39 @@
     </div>
     <div class="row">
         <div class="column">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4603/3312/fdc3/3200/0202/slideshow/_DSC5025.jpg?1577076217">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/45f1/3312/fdc3/3200/0201/slideshow/_DSC5003.jpg?1577076199">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4640/3312/fdc3/3200/0206/slideshow/_DSC5146.jpg?1577076281">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4619/3312/fdc3/3200/0204/slideshow/_DSC5096-2.jpg?1577076242">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/46a2/3312/fdc3/3200/020a/slideshow/_DSC5353.jpg?1577076377">
-      
-        </div>
-        <div class="column">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4688/3312/fdc3/3200/0209/slideshow/_DSC5221-open.jpg?1577076353">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/460b/3312/fdc3/3200/0203/slideshow/_DSC5060-2.jpg?1577076228">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/46db/3312/fd44/b400/00a4/slideshow/%E5%85%AD%E4%BA%BA%E5%92%8C%E5%AE%A4%EF%BC%88B%EF%BC%89%E5%85%A5%E5%8F%A3(%E6%96%B0).jpg?1577076389">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4671/3312/fdc3/3200/0208/slideshow/_DSC5194.jpg?1577076327">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4663/3312/fd44/b400/00a1/slideshow/_DSC5182-1.jpg?1577076315">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4633/3312/fdc3/3200/0205/slideshow/_DSC5136.jpg?1577076265">
+            <img class="imgR" id="myImg00" src="https://images.adsttc.com/media/images/5e00/4603/3312/fdc3/3200/0202/slideshow/_DSC5025.jpg?1577076217">
+            <img class="imgR" id="myImg01" src="https://images.adsttc.com/media/images/5e00/45f1/3312/fdc3/3200/0201/slideshow/_DSC5003.jpg?1577076199">
+            <img class="imgR" id="myImg02" src="https://images.adsttc.com/media/images/5e00/4640/3312/fdc3/3200/0206/slideshow/_DSC5146.jpg?1577076281">
+            <img class="imgR" id="myImg03" src="https://images.adsttc.com/media/images/5e00/4619/3312/fdc3/3200/0204/slideshow/_DSC5096-2.jpg?1577076242">
+            <img class="imgR" id="myImg04" src="https://images.adsttc.com/media/images/5e00/4633/3312/fdc3/3200/0205/slideshow/_DSC5136.jpg?1577076265">
 
         </div>
         <div class="column">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4625/3312/fd44/b400/009f/slideshow/_DSC5104-1.jpg?1577076252">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/464b/3312/fd44/b400/00a0/slideshow/_DSC5165.jpg?1577076292">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/46f0/3312/fdc3/3200/020b/slideshow/%E5%85%A5%E5%8F%A3%EF%BC%882%EF%BC%89%E6%96%B0.jpg?1577076448">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4694/3312/fd44/b400/00a3/slideshow/_DSC5261.jpg?1577076365">
-            <img class="imgR" src="https://images.adsttc.com/media/images/5e00/4657/3312/fdc3/3200/0207/slideshow/_DSC5181.jpg?1577076304">
-            
+            <img class="imgR" id="myImg05" src="https://images.adsttc.com/media/images/5e00/4688/3312/fdc3/3200/0209/slideshow/_DSC5221-open.jpg?1577076353">
+            <img class="imgR" id="myImg06" src="https://images.adsttc.com/media/images/5e00/460b/3312/fdc3/3200/0203/slideshow/_DSC5060-2.jpg?1577076228">
+            <img class="imgR" id="myImg07" src="https://images.adsttc.com/media/images/5e00/46db/3312/fd44/b400/00a4/slideshow/%E5%85%AD%E4%BA%BA%E5%92%8C%E5%AE%A4%EF%BC%88B%EF%BC%89%E5%85%A5%E5%8F%A3(%E6%96%B0).jpg?1577076389">
+            <img class="imgR" id="myImg08" src="https://images.adsttc.com/media/images/5e00/4671/3312/fdc3/3200/0208/slideshow/_DSC5194.jpg?1577076327">
+            <img class="imgR" id="myImg09" src="https://images.adsttc.com/media/images/5e00/4663/3312/fd44/b400/00a1/slideshow/_DSC5182-1.jpg?1577076315">
+            <img class="imgR" id="myImg10" src="https://images.adsttc.com/media/images/5e00/46a2/3312/fdc3/3200/020a/slideshow/_DSC5353.jpg?1577076377">
+        </div>
+        <div class="column">
+            <img class="imgR" id="myImg11" src="https://images.adsttc.com/media/images/5e00/4625/3312/fd44/b400/009f/slideshow/_DSC5104-1.jpg?1577076252">
+            <img class="imgR" id="myImg12" src="https://images.adsttc.com/media/images/5e00/464b/3312/fd44/b400/00a0/slideshow/_DSC5165.jpg?1577076292">
+            <img class="imgR" id="myImg13" src="https://images.adsttc.com/media/images/5e00/46f0/3312/fdc3/3200/020b/slideshow/%E5%85%A5%E5%8F%A3%EF%BC%882%EF%BC%89%E6%96%B0.jpg?1577076448">
+            <img class="imgR" id="myImg14" src="https://images.adsttc.com/media/images/5e00/4694/3312/fd44/b400/00a3/slideshow/_DSC5261.jpg?1577076365">
+            <img class="imgR" id="myImg15" src="https://images.adsttc.com/media/images/5e00/4657/3312/fdc3/3200/0207/slideshow/_DSC5181.jpg?1577076304">
+
         </div>
     </div>
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="close" onclick="location.href='/Home/Gallery'">&times;</span>
+        <img class="modal-content" id="imgM">
+    </div>
+
+
 </div>
+<script src="~/js/gallery.js"></script>

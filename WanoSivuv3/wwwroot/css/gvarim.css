@@ -1,127 +1,124 @@
-﻿.backwall {
+﻿.contain {
     background: url("https://i.ibb.co/qr7JSXb/199787363-4365141293549477-5593701837490987339-n.jpg") fixed bottom;
 }
 
 .container {
+    font-family: tahoma;
     height: 100vh;
-    width: 100vw;
-    max-height: 800px;
-    max-width: 1280px;
-    min-height: 600px;
-    min-width: 1000px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
     
-
-}
-
-.border {
-    height: 369px;
-    width: 290px;
-    background: transparent;
-    border-radius: 10px;
-    transition: border 1s;
-    position: relative;
-}
-
-    .border:hover {
-        border: 1px solid #fff;
-    }
-
-.card {
-    height: 379px;
-    width: 300px;
-    background: #808080;
-    border-radius: 10px;
-    transition: background 0.8s;
-    overflow: hidden;
-    background: #000;
-    box-shadow: 0 70px 63px -60px #000;
-    display: flex;
+    background-size: cover;
+    background-position: center;
     justify-content: center;
     align-items: center;
+}
+.row {
+    justify-content: center;
+}
+.name {
+    color: black;
+    font-size: 38px;
+}
+.our-team {
+    padding: 30px 0 40px;
+    margin-bottom: 30px;
+    /*background-color: #f7f5ec;*/
+    background: rgb(207,207,207);
+    background: linear-gradient(45deg, rgba(207,207,207,1) 0%, rgba(255,255,255,1) 100%);
+    text-align: center;
+    overflow: hidden;
     position: relative;
+    border-radius: 3px;
 }
 
-.card0 {
-    background: url("https://i.ibb.co/QMGvptP/ido.jpg") center center no-repeat;
-    background-size: 300px;
-}
-
-    .card0:hover {
-        background: url("https://i.ibb.co/QMGvptP/ido.jpg") left center no-repeat;
-        background-size: 600px;
+    .our-team .picture {
+        display: inline-block;
+        height: 130px;
+        width: 130px;
+        margin-bottom: 50px;
+        z-index: 1;
+        position: relative;
     }
 
-        .card0:hover h2 {
-            opacity: 1;
+        .our-team .picture::before {
+            content: "";
+            width: 100%;
+            height: 0;
+            border-radius: 50%;
+            background-color: #1369ce;
+            position: absolute;
+            bottom: 135%;
+            right: 0;
+            left: 0;
+            opacity: 0.9;
+            transform: scale(3);
+            transition: all 0.3s linear 0s;
         }
 
-        .card0:hover .fa {
-            opacity: 1;
-        }
-
-.card1 {
-    background: url("https://i.ibb.co/PgwsTht/ere.jpg") center center no-repeat;
-    background-size: 300px;
-}
-
-    .card1:hover {
-        background: url("https://i.ibb.co/PgwsTht/ere.jpg") left center no-repeat;
-        background-size: 600px;
+    .our-team:hover .picture::before {
+        height: 100%;
     }
 
-        .card1:hover h2 {
-            opacity: 1;
-        }
-
-        .card1:hover .fa {
-            opacity: 1;
-        }
-
-.card2 {
-    background: url("https://i.ibb.co/jv8tHwM/yon.jpg") center center no-repeat;
-    background-size: 300px;
-}
-
-    .card2:hover {
-        background: url("https://i.ibb.co/jv8tHwM/yon.jpg") left center no-repeat;
-        background-size: 600px;
+    .our-team .picture::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #1369ce;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
     }
 
-        .card2:hover h2 {
-            opacity: 1;
+    .our-team .picture img {
+        width: 100%;
+        height: 130px; object-fit: cover;        
+        border-radius: 50%;
+        transform: scale(1);
+        transition: all 0.9s ease 0s;
+    }
+
+    .our-team:hover .picture img {
+        box-shadow: 0 0 0 14px #f7f5ec;
+        transform: scale(0.7);
+    }
+
+    .our-team .title {
+        display: block;
+        font-size: 15px;
+        color: #4e5052;
+        text-transform: capitalize;
+    }
+
+    .our-team .social {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: #1369ce;
+        position: absolute;
+        bottom: -100px;
+        left: 0;
+        transition: all 0.5s ease 0s;
+    }
+
+    .our-team:hover .social {
+        bottom: 0;
+    }
+
+    .our-team .social li {
+        display: inline-block;
+    }
+
+        .our-team .social li a {
+            display: block;
+            padding: 10px;
+            font-size: 17px;
+            color: white;
+            transition: all 0.3s ease 0s;
+            text-decoration: none;
         }
 
-        .card2:hover .fa {
-            opacity: 1;
-        }
-
-h2 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #fff;
-    margin: 20px;
-    opacity: 0;
-    transition: opacity 1s;
-    font-size:30px;
-}
-
-.fa {
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-.icons {
-    position: absolute;
-    fill: #fff;
-    color: #fff;
-    height: 130px;
-    top: 226px;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
+            .our-team .social li a:hover {
+                color: black;
+                background-color: #f7f5ec;
+            }
