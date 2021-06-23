@@ -24,5 +24,6 @@ namespace WanoSivuv3.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public UserType Type { get; set; } = UserType.Client;
+        public UserInfo UserInfo { get; set; }
     }
 }
