@@ -144,16 +144,16 @@ namespace WanoSivuv3.Controllers
                         _context.SaveChanges();
                     }*/
                     //product.myTags = new List<Tags>();
-                    var noder = _context.Product.Where(a => a.myTags.Any(t => t.Id == a.Id)).ToList();
-                    var prod = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
-                    var tagi = _context.Tags.Include(t => t.myProducts).FirstOrDefault();//(t =>t.Id.CompareTo(myTags));
+                    //var noder = _context.Product.Where(a => a.myTags.Any(t => t.Id == a.Id)).ToList();
+                    //var prod = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
+                    //var tagi = _context.Tags.Include(t => t.myProducts).FirstOrDefault();//(t =>t.Id.CompareTo(myTags));
                     //var lodea = _context.Product.Include(p => p.myTags).GroupBy(x => new { x.Id, x.myTags});
                     product.myTags = new List<Tags>();
                     product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
                     _context.Update(product);
                         /* product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
                          _context.Update(product);*/
-                        await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                    // }
                 }
                 catch (DbUpdateConcurrencyException)

@@ -49,6 +49,11 @@
                     {
                         <li class="nav-item"><a asp-controller="Users" asp-action="Login">Login<span class="underline"></span></a></li>
                     }
+                    @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
+                    {
+                        <li class="nav-item"><a asp-controller="UserInfoes" asp-action="Index">Account<span class="underline"></span></a></li>
+                    }
+
                 </ul>
 
             </div>
