@@ -5,7 +5,6 @@
 
 
 <head>
-    @*<link rel="stylesheet" href="~/css/gallery.css">*@
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/reservation.css" />
@@ -16,7 +15,6 @@
 
 </head>
 
-<!-- Trying to code Confirm Reservation Dribble Shot -->
 <body>
     <br />
     <div class="text-center">
@@ -29,18 +27,13 @@
     <div class="centerall">
         <div class="reservation-menu">
             <div class="container">
-
                 <div class="reservation">
                     <p class="text">Table For</p>
-
                     <div class="reservation__table-select">
                         <button id="minus" class="reservation__btn reservation__btn--disabled text iblk">-</button>
-
                         <span class="reservation__qty text iblk">2</span>
-
                         <button id="plus" class="reservation__btn text iblk">+</button>
                     </div>
-
                     <div class="reservation__datechoice">
                         <p class="text">Choose Arrival Time</p>
                         <select class="reservation__datetime text">
@@ -53,9 +46,9 @@
                             <option>23:00</option>
                         </select>
                     </div>
-
                     <button onclick="orderDone()" class="reservation__confirm">Confirm</button>
-                    <div class="noteMade"><br />*Reservations can only be made from Sunday to Thursday</div>
+                    <div class="noteMade"><br />*Reservations can only be made on Sunday to Thursday from 20:00-23:00
+                    </div>
                 </div>
             </div>
         </div>
