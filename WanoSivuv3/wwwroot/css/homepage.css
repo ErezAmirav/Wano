@@ -52,7 +52,7 @@ p {
     letter-spacing: 1.5px;
     font-size: 18px;
 }
-/*End Global*/
+
 
 /*Start Mutual*/
 p, .a-CTA, input, header .navigation-bar a, .copyright li, .contact .form form label, .contact .form form button {
@@ -116,7 +116,6 @@ header .navigation-bar ul li, header .text, .about-us .text, .reservation .text,
                 header .text .arrow .left:after, header .text .arrow .right:after, header .text span, footer .social-media .links a, footer .newsletter i, .copyright .arrow-up, .contact .text i, .contact .form form label {
                     display: inline-block;
                 }
-/*End Mutual*/
 
 
 /*Start Header*/
@@ -298,7 +297,6 @@ header {
         z-index: 10;
         background: url("https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988515/arrow-down.png") no-repeat center;
     }
-/*End Header*/
 
 /*Start About-Us*/
 .about-us, .reservation {
@@ -334,7 +332,6 @@ header {
     background: url("https://i.ibb.co/PzK8hhn/three-col1-1.jpg") fixed center;
     background-size: cover;
 }
-/*End Recipes*/
 
 /*Start Menu*/
 .menu {
@@ -422,7 +419,6 @@ header {
     .menu .text .fa-asterisk {
         color: #9a9998;
     }
-/*End Menu*/
 
 /*Start fixed-image*/
 .fixed-image {
@@ -430,7 +426,6 @@ header {
     background-size: cover;
     height: 400px;
 }
-/*End fixed-image*/
 
 /*Start Footer*/
 footer {
@@ -534,9 +529,6 @@ footer {
             color: #919191;
         }
 
-/*End Footer*/
-
-/*End Home Page*/
 
 /*Start Contact Page*/
 .contact-header {
@@ -607,7 +599,6 @@ footer {
             padding: 12px 30px;
             font-size: 12px;
         }
-/*End Contact Page*/
 
 /*Start Home Page Responsive*/
 
@@ -775,6 +766,7 @@ footer {
         padding: 60px 0 60px 20px;
     }
 }
+/*Button Scroll To Top*/
 
 #to-top {
     margin:auto;

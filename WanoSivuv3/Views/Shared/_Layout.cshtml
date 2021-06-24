@@ -6,10 +6,7 @@
     <title>@ViewData["Title"] - WanoSivuv3</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/homepage.css">
-
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
     <script src="~/js/backtotop.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <link rel="shortcut icon" type="image/png" href="https://i.ibb.co/WzMnFXH/WanoFavi.png">
@@ -17,8 +14,8 @@
 
 </head>
 <body>
-    <!--שורת שליטה למעלה-->
 
+    <!--Navigation Bar-->
     <header>
         <nav>
             <div class="logo">
@@ -43,16 +40,17 @@
                     }
                     @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
                     {
+                        <li class="nav-item"><a asp-controller="UserInfoes" asp-action="Index">Account<span class="underline"></span></a></li>
+                    }
+                    @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
+                    {
                         <li><a asp-controller="Users" asp-action="Logout">Logout<span class="underline"></span></a></li>
                     }
                     else
                     {
                         <li class="nav-item"><a asp-controller="Users" asp-action="Login">Login<span class="underline"></span></a></li>
                     }
-                    @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
-                    {
-                        <li class="nav-item"><a asp-controller="UserInfoes" asp-action="Index">Account<span class="underline"></span></a></li>
-                    }
+
 
                 </ul>
 
@@ -67,30 +65,14 @@
     </div>
 </body>
 </html>
-<!--שורת שליטה למטה-->
+
+<!--Footer-->
 <footer>
     <div class="text">
         <h2>WANO</h2>
         
     </div>
-    @*<div class="contact-container">
-            <div class="social-media">
-                <h3>Follow Along</h3>
-                <div class="links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="newsletter">
-                <h3>NewsLetter</h3>
-                <form method="post">
-                    <input type="email" name="email" placeholder="Type Your Email">
-                    <i class="fas fa-envelope"></i>
-                </form>
-            </div>
-        </div>*@
+   
 </footer>
 <div class="copyright">
     <div id="to-top" title="back to top">↑</div>
