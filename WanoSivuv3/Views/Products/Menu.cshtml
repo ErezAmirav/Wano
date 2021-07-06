@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/css/menu.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="~/js/menu.js"></script>
+
 </head>
 <br />
 <div class="centersearch">
@@ -18,58 +20,70 @@
         <input type="submit" value="Search" class="searchButton" />
     </form>
 </div>
+<div class="menu-btns">
+    <button type="button" class="menu-btn active-btn" id="allCat">All</button>
+    <button type="button" class="menu-btn" id="starters">Starters</button>
+    <button type="button" class="menu-btn" id="sushi">Sushi</button>
+    <button type="button" class="menu-btn" id="meat">Meat</button>
+    <button type="button" class="menu-btn" id="from-the-sea">From The Sea</button>
+    <button type="button" class="menu-btn" id="noodles">Noodles</button>
+    <button type="button" class="menu-btn" id="salads">Salads</button>
+    <button type="button" class="menu-btn" id="desserts">Desserts</button>
+</div>
 <table class="table">
     <thead>
         <tr class="menunav">
-            <th class="menuNames">
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th class="menuNames">
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th class="menuNamesP">
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th class="menuNames">
-                @Html.DisplayNameFor(model => model.Desc)
-            </th>
-            <th class="menuNames">
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-
+            @*<th class="menuNames">
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th class="menuNames">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="menuNamesP">
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th class="menuNames">
+                    @Html.DisplayNameFor(model => model.Desc)
+                </th>*@
+            @*<th class="menuNames">
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>*@
         </tr>
     </thead>
-    <tbody>
+
+
+
+    <tbody class="food-items">
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
+            <tr>
+                <td>
 
-                <div class="container">
-                    <div class="row">
-                        <div id="productIdo" class="card text-center">
-                            <img src="@item.Image" width="100" />
-                            <!--<div class="card-body">-->
+                    <div class="container">
+                        <div class="row">
+                            <div id="productIdo" class="card text-center">
+                                <img src="@item.Image" width="100" />
+                                <!--<div class="card-body">-->
                                 @*<p class="text-center">@item.Name</p>*@   <!-- don't need the item name on the picture -->
-                            <!--</div>-->
+                                <!--</div>-->
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desc)
-            </td>
-            <th>
-                @Html.DisplayNameFor(modelItem => item.Category.Name)
-            </th>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desc)
+                </td>
+                @*<th>
+                        @Html.DisplayNameFor(modelItem => item.Category.Name)
+                    </th>*@
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
