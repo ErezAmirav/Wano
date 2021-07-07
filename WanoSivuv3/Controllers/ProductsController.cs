@@ -35,8 +35,15 @@ namespace WanoSivuv3.Controllers
         }
         public async Task<IActionResult> Search(string queryN)
         {
-            var WanoSivuv3Context = _context.Product.Include(c => c.Category).Where(p => p.Name.Contains(queryN) || (queryN == null) || (p.Desc.Contains(queryN)));
+            var WanoSivuv3Context = _context.Product.Include(c => c.Category).Where(p => p.Name.Contains(queryN) ||
+                                    (queryN == null) || (p.Desc.Contains(queryN)));
             return View("Menu",await WanoSivuv3Context.ToListAsync());
+        }
+        public async Task<IActionResult> Buttom(string ctN)
+        {
+            var WanoSivuv3Context = _context.Product.Include(c => c.Category).Where(p => p.Category.Name.Equals(ctN) ||
+                                    (ctN == null));
+            return View("Menu", await WanoSivuv3Context.ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -132,10 +139,21 @@ namespace WanoSivuv3.Controllers
                     // {
                     //_context.Remove(product.myTags);
                     //product = _context.Tags.Include(t => t.Id)
-                    /************ Product pro = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
+                 Product pro = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
                  _context.Remove(pro);
-                 _context.SaveChanges();*********/
-                    /*var harta = _context.Product.
+                 _context.SaveChanges();
+                    //pro.myTags=
+                    //pro.myTags = new List<Tags>();
+                    //pro.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+                    product.myTags = new List<Tags>();
+                    product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+                    if (ModelState.IsValid)
+                    {
+                        _context.Add(product);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                    return View(product);                    /*var harta = _context.Product.
                     Include(p => p.myTags).l*/
                     //product.myTags = pro.myTags.Where(p => myTags.Contains(p.Id)).ToList();
                     /*foreach (var item in product.myTags)
@@ -148,13 +166,14 @@ namespace WanoSivuv3.Controllers
                     //var prod = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
                     //var tagi = _context.Tags.Include(t => t.myProducts).FirstOrDefault();//(t =>t.Id.CompareTo(myTags));
                     //var lodea = _context.Product.Include(p => p.myTags).GroupBy(x => new { x.Id, x.myTags});
-                    product.myTags = new List<Tags>();
-                    product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
-                    _context.Update(product);
-                        /* product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
-                         _context.Update(product);*/
-                    await _context.SaveChangesAsync();
-                   // }
+                    //product.myTags = new List<Tags>();
+                    //product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+                    //_context.Update(product);
+                    //    /* product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+                    //     _context.Update(product);*/
+                    //await _context.SaveChangesAsync();
+
+                    // }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

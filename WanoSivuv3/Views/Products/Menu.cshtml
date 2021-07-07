@@ -21,14 +21,14 @@
     </form>
 </div>
 <div class="menu-btns">
-    <button type="button" class="menu-btn active-btn" id="allCat">All</button>
-    <button type="button" class="menu-btn" id="starters">Starters</button>
-    <button type="button" class="menu-btn" id="sushi">Sushi</button>
-    <button type="button" class="menu-btn" id="meat">Meat</button>
-    <button type="button" class="menu-btn" id="from-the-sea">From The Sea</button>
-    <button type="button" class="menu-btn" id="noodles">Noodles</button>
-    <button type="button" class="menu-btn" id="salads">Salads</button>
-    <button type="button" class="menu-btn" id="desserts">Desserts</button>
+    <form asp-action="Buttom"> <button value="" class="menu-btn active-btn" id="allCat">All</button></form>
+    <form asp-action="Buttom"> <button value="Starters" type="submit" class="menu-btn" name="ctN">Starters</button></form>
+    <form asp-action="Buttom"> <button value="Sushi" type="submit" class="menu-btn" name="ctN">Sushi</button></form>
+    <form asp-action="Buttom"> <button value="Meat" type="submit" class="menu-btn" name="ctN">Meat</button></form>
+    <form asp-action="Buttom"> <button value="From the sea" type="submit" class="menu-btn" name="ctN">From the Sea</button></form>
+    <form asp-action="Buttom"> <button value="Noodles" type="submit" class="menu-btn" name="ctN">Noodles</button></form>
+    <form asp-action="Buttom"> <button value="Salads" type="submit" class="menu-btn" name="ctN">Salads</button></form>
+    <form asp-action="Buttom"> <button value="Desserts" type="submit" class="menu-btn" name="ctN">Desserts</button></form>
 </div>
 <table class="table">
     <thead>
@@ -61,10 +61,11 @@
 
                     <div class="container">
                         <div class="row">
+
                             <div id="productIdo" class="card text-center">
                                 <img src="@item.Image" width="100" />
                                 <!--<div class="card-body">-->
-                                @*<p class="text-center">@item.Name</p>*@   <!-- don't need the item name on the picture -->
+                                @*<p class="text-center">@item.Name</p>*@<!-- don't need the item name on the picture -->
                                 <!--</div>-->
                             </div>
                         </div>
@@ -84,7 +85,7 @@
                     </th>*@
 
             </tr>
-        }
+}
     </tbody>
 </table>
 <br />
