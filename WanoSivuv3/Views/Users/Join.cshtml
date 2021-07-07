@@ -1,0 +1,62 @@
+﻿@using  WanoSivuv3.Controllers
+@model IEnumerable<UserJoin>
+
+@{
+    ViewData["Title"] = "Join";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.u.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ui.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ui.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ui.Number)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model as ICollection<UserJoin>)
+        {
+            <tr>
+                <th>
+                    @item.u.Username
+                </th>
+                <td>
+                    @item.u.Email
+                </td>
+                <td>
+                    @item.u.Type
+                </td>
+                <td>
+                    @item.ui.City
+                </td>
+                <td>
+                    @item.ui.Address
+                </td>
+                <td>
+                    @item.ui.Number
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

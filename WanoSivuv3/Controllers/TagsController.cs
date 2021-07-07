@@ -33,7 +33,7 @@ namespace WanoSivuv3.Controllers
                 return NotFound();
             }
 
-            var tags = await _context.Tags
+            var tags = await _context.Tags.Include(t => t.myProducts)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tags == null)
             {

@@ -71,7 +71,7 @@ namespace WanoSivuv3.Controllers
         private async void Signin(User account)
         {
             var claims = new List<Claim>
-            { 
+            {
                 new Claim(ClaimTypes.Name, account.Username),
                 new Claim(ClaimTypes.Role, account.Type.ToString()),
             };
@@ -90,7 +90,7 @@ namespace WanoSivuv3.Controllers
 
 
         // GET: Users/Register
-            public IActionResult Register()
+        public IActionResult Register()
         {
             return View();
         }
@@ -129,6 +129,15 @@ namespace WanoSivuv3.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
+        }
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Join()
+        {
+            var query =
+                from user in _context.User
+                join info in _context.UserInfo on user.Id equals info.UserId
+                select new UserJoin(user,info);
+            return View("Join", await query.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -260,5 +269,12 @@ namespace WanoSivuv3.Controllers
             return _context.User.Any(e => e.Id == id);
         }
     }
-    
+    public class UserJoin
+    {
+        public User u { get; set; }
+        public UserInfo ui { get; set; }
+
+        public UserJoin(User u, UserInfo ui) { this.u = u; this.ui = ui; }
+    }
+
 }
