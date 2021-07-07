@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<WanoSivuv3.Models.Product>
 
-@{
-    ViewData["Title"] = "Menu";
-}
+@{ ViewData["Title"] = "Menu"; }
 <head>
     <link rel="stylesheet" href="~/css/menu.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
@@ -31,181 +29,30 @@
 </div>
 <table class="table">
 
-        <tr class="menunav">
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="menuNamesP">
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>*@
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>*@
-        </tr>
-    </thead>
-
-
-
-        <tr class="menunav">
-                <td>
-                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                </td>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="menuNamesP">
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>*@
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>*@
-        </tr>
-    </thead>
-
-
-
-        <tr class="menunav">
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="menuNamesP">
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>*@
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>*@
-        </tr>
-    </thead>
-
-
-
-        <tr class="menunav">
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="menuNamesP">
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>*@
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>*@
-        </tr>
-    </thead>
-
-
-
-        <tr class="menunav">
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="menuNamesP">
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>*@
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>*@
-        </tr>
-    </thead>
-
-
-
-        <tr class="menunav">
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="menuNamesP">
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>*@
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>*@
-        </tr>
-    </thead>
-
-
-
-        <tr class="menunav">
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="menuNamesP">
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>*@
-            @*<th class="menuNames">
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>*@
-        </tr>
-    </thead>
-
-
-
     <tbody class="food-items">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <div class="container">
-                        <div class="row">
-                            <div id="productIdo" class="card text-center">
-                                <img src="@item.Image" width="100" />
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Desc)
-                </td>
-                @*<th>
-                        @Html.DisplayNameFor(modelItem => item.Category.Name)
-                    </th>*@
-
-            </tr>
-            }
+<tr>
+    <td>
+        <div class="container">
+            <div class="row">
+                <div id="productIdo" class="card text-center">
+                    <img src="@item.Image" width="100" />
+                </div>
+            </div>
+        </div>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Desc)
+    </td>
+</tr>
+}
     </tbody>
 </table>
 <br />
