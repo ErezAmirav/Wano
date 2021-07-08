@@ -42,11 +42,6 @@ namespace WanoSivuv3.Controllers
         }
         public async Task<IActionResult> advSearch(string queryP, string queryC, string queryM)
         {
-
-            //var WanoSivuv3Context = _context.Product.Include(c => c.Category).Include(t => t.myTags).Where(p => (p.Name.Contains(queryP)
-            //                        && p.Category.Equals(queryC) && p.myTags.Equals(queryT)) ||
-            //                        (queryP == null));
-           // int p = Int32.Parse(queryM);
             var WanoSivuv3Context = _context.Product.Include(a => a.Category).Where(a => 
                                     (a.Name.Contains(queryP) || a.Desc.Contains(queryP)) 
                                     && a.Category.Name.Equals(queryC)
