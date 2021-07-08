@@ -1,7 +1,5 @@
-﻿// Get the modal
-var modal = document.getElementById("myModal");
+﻿var modal = document.getElementById("myModal");
 
-// Get the image and insert it inside the modal 
 
 var img = document.getElementById("myImg00");
 var img01 = document.getElementById("myImg01");

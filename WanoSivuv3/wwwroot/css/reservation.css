@@ -8,15 +8,12 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /*   outline: 1px solid black; */
 }
 
-/* Main Structure
------------------------ */
+
 
 .reservation-menu {
     box-shadow: 0px 28px 100px 17px rgba(0,0,0,0.20);
-    /*   height: 600px; */
     margin: auto;
     padding: 50px 0;
     position: relative;
@@ -30,16 +27,14 @@
     padding-bottom: inherit;
 }
 
-/* Text
------------------------ */
+
 
 .text {
     font-size: 18px;
     letter-spacing: 1px;
 }
 
-/* Header
------------------------ */
+
 
 .icons-wrapper {
     align-items: center;
@@ -74,8 +69,6 @@
     text-transform: uppercase;
 }
 
-/* Reservation Section
------------------------ */
 
 .reservation {
     margin-top: 50px;

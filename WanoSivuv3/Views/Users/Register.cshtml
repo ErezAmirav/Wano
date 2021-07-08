@@ -2,44 +2,10 @@
 
 @{
     ViewData["Title"] = "Register";
-    //Layout = "_LoginLayout";
 }
 <head><link rel="stylesheet" href="~/css/loginpage.css"></head>
 
-    
-
-
 <hr />
-@*<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Register">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" placeholder="Choose your username!"/>
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control"placeholder="Naruto@Uzomaki.com" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" placeholder="******" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
-                <a class="btn btn-danger" asp-controller="Home" asp-action="Index">Back</a>
-            </div>
-        </form>
-        @if (ViewBag.Error != null)
-        {
-        <div class="text-danger">@ViewBag.Error </div>
-        }
-    </div>
-</div>*@
 
 <div id="login-box">
     <div class="left">
@@ -79,14 +45,7 @@
         }
     </div>
     
-    <div class="right">
-        <br /><br /><br /><br /><br /><br />
-        @*<span class="loginwith">Sign in with<br />social network</span>*@
-        <button class="social-signin facebook">Log in with facebook</button>
-    </div>
-    <div class="or">OR</div>
 </div>
-
 
 
 @section Scripts {
