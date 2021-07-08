@@ -37,6 +37,7 @@
                     @if (Context.User.IsInRole("Admin"))
                     {
                         <li><a asp-controller="Products" asp-action="Index">Products<span class="underline"></span></a></li>
+                        <li><a asp-controller="Home" asp-action="Analytics">Analytics<span class="underline"></span></a></li>
                     }
                     @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
                     {
@@ -70,7 +71,9 @@
 <footer>
     <div class="text">
         <h2>WANO</h2>
-        
+        <!--Facebook Share Button-->
+        <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fi.ibb.co%2FJpYmGjd%2FWANO-logo.png&layout=button&size=small&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
     </div>
    
 </footer>
@@ -82,9 +85,13 @@
         <li>Allenby St. at Rothschild Blvd, Tel-Aviv</li>
         <li>Tel: 03-9666666</li>
     </ul>
+
     <ul class="CTA">
         <li><a asp-controller="Home" asp-action="Team">CONTACT THE TEAM</a></li>
+
     </ul>
+   
+
 </div>
 
 
