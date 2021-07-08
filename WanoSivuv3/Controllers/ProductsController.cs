@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -128,23 +129,8 @@ namespace WanoSivuv3.Controllers
             {
                 try
                 {
-                    /* if (product.myTags == null)
-                     {
-                         product.myTags = new List<Tags>();
-                         product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
-                         _context.Update(product);
-                         await _context.SaveChangesAsync();
-                     }*/
-                    //else
-                    // {
-                    //_context.Remove(product.myTags);
-                    //product = _context.Tags.Include(t => t.Id)
                  Product pro = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
-                 _context.Remove(pro);
-                 _context.SaveChanges();
-                    //pro.myTags=
-                    //pro.myTags = new List<Tags>();
-                    //pro.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
+
                     product.myTags = new List<Tags>();
                     product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
                     if (ModelState.IsValid)
@@ -153,27 +139,7 @@ namespace WanoSivuv3.Controllers
                         await _context.SaveChangesAsync();
                         return RedirectToAction(nameof(Index));
                     }
-                    return View(product);                    /*var harta = _context.Product.
-                    Include(p => p.myTags).l*/
-                    //product.myTags = pro.myTags.Where(p => myTags.Contains(p.Id)).ToList();
-                    /*foreach (var item in product.myTags)
-                    {
-                        //product.myTags.();
-                        _context.SaveChanges();
-                    }*/
-                    //product.myTags = new List<Tags>();
-                    //var noder = _context.Product.Where(a => a.myTags.Any(t => t.Id == a.Id)).ToList();
-                    //var prod = _context.Product.Include(p => p.myTags).FirstOrDefault(p => p.Id == product.Id);
-                    //var tagi = _context.Tags.Include(t => t.myProducts).FirstOrDefault();//(t =>t.Id.CompareTo(myTags));
-                    //var lodea = _context.Product.Include(p => p.myTags).GroupBy(x => new { x.Id, x.myTags});
-                    //product.myTags = new List<Tags>();
-                    //product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
-                    //_context.Update(product);
-                    //    /* product.myTags.AddRange(_context.Tags.Where(x => myTags.Contains(x.Id)));
-                    //     _context.Update(product);*/
-                    //await _context.SaveChangesAsync();
-
-                    // }
+                    return View(product);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -227,5 +193,50 @@ namespace WanoSivuv3.Controllers
             return _context.Product.Any(e => e.Id == id);
         }
     }
+/*
+    public IActionResult Statistics()
+    {
+        if (HttpContext.Session.GetString("userId") != null)
+        {
+            if (HttpContext.Session.GetString("Type").Equals("Admin"))
+            {
 
+                var mostPopulaMonths = _context.Account
+           .GroupBy(y => y.weddingDate.Month, (month, records) => new
+           {
+               Key = month,
+               Count = records.Count(),
+               Description = month
+           })
+           .OrderBy(x => x.Key)
+           .ToList();
+
+                var dataPoints = new List<BarData>();
+                mostPopulaMonths.ForEach(x => dataPoints.Add(new BarData() { name = this.getMonthName(x.Description), value = x.Count }));
+
+                var villasPie = _context.Account
+                    .GroupBy(y => y.LocationId, (locationId, records) => new
+                    {
+                        Key = locationId,
+                        Count = records.Count(),
+                        Description = locationId
+                    })
+                    .OrderBy(x => x.Count)
+                    .ToList();
+                var piedataPoints = new List<PieDataPoint>();
+                villasPie.ForEach(x => piedataPoints.Add(new PieDataPoint() { Name = x.Description.ToString(), Value = x.Count }));
+
+                var model = new StatisticsViewModel
+                {
+                    barChart = new BarChart { dataPoints = dataPoints },
+                    pieChart = new PieChart { dataPoints = piedataPoints }
+                };
+                return View(model);
+
+            }
+
+
+        }
+        return RedirectToAction("Login", "Accounts");
+    }*/
 }

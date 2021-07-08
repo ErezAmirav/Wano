@@ -1,0 +1,148 @@
+﻿@using WanoSivuv3.Models;
+@using WanoSivuv3.Controllers;
+@{
+    ViewBag.Title = "statistics";
+    //Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    //if (Customer.IsManager)
+    //    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    //else
+    //    Layout = "_Layout";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+    <br />
+    <br />
+    <br />
+    <table id="datatable" style="display:none">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Type</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var v in ViewBag.data as ICollection<Stat>)
+            {
+                <tr>
+                    <th> @v.Key</th>
+                    <th>@v.Values</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        Highcharts.chart('container', {
+            data: {
+                table: 'datatable'
+            },
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Users VS admins'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Number of Items'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+
+        });
+    </script>
+
+</div>
+
+
+
+<p>
+
+
+
+
+</p>
+
+@*<table id="datatable2" style="display:none">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Item Name</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var v in ViewBag.data2 as ICollection<Stat>)
+        {
+            <tr>
+                <th> @v.Key</th>
+                <th>@v.Values</th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+    <div id="container2" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+
+
+
+    <script>
+            Highcharts.chart('container2', {
+                data: {
+                    table: 'datatable2'
+                },
+                chart: {
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Which brand the customers prefer to order'
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}: {point.percentage:.1f} %'
+                        }
+                    }
+
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                }
+            });
+
+
+
+    </script>
+
+</div>*@
