@@ -44,6 +44,24 @@ namespace WanoSivuv3.Controllers
             statistic1.Add(new Stat("Admin", countAdmin));
 
             ViewBag.data = statistic1;
+            ICollection<Stat> statistic2 = new Collection<Stat>();
+            List<Product> products = _context.Product.ToList();
+            List<Category> categories = _context.Category.ToList();
+            var res2 = from prod in products
+                          join cat in categories on prod.CategoryId equals cat.Id
+                          group cat by cat.Id into Gr
+                          select new { id = Gr.Key, num = Gr.Count() };
+
+            var stat = from g in res2
+                         join cat in categories on g.id equals cat.Id
+                         select new { category = cat.Name, count = g.num };
+            foreach (var v in stat)
+            {
+                if (v.count > 0)
+                    statistic2.Add(new Stat(v.category, v.count));
+            }
+
+            ViewBag.data2 = statistic2;
             //finish first statistic
             //statistic 2- which brand the customers prefer to order
             /*ICollection<Stat> statistic2 = new Collection<Stat>();
