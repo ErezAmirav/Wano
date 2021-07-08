@@ -25,5 +25,8 @@ namespace WanoSivuv3.Models
         public string Password { get; set; }
         public UserType Type { get; set; } = UserType.Client;
         public UserInfo UserInfo { get; set; }
+        [Display(Name = "Favorite Dish")]
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
     }
 }

@@ -1,0 +1,58 @@
+﻿@using  WanoSivuv3.Controllers
+@model IEnumerable<FavoriteDish>
+
+@{
+    ViewData["Title"] = "FavoriteDish";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.u.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pro.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pro.Desc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model as ICollection<FavoriteDish>)
+        {
+            <tr>
+                <th>
+                    @item.u.Username
+                </th>
+                <td>
+                    @item.u.Email
+                </td>
+                <td>
+                    @item.u.Type
+                </td>
+                <td>
+                    @item.pro.Name
+                </td>
+                <td>
+                    @item.pro.Desc
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <p align="center">
+        <a class="btn btn-primary" asp-action="Index">Users</a>
+    </p>
+</div>

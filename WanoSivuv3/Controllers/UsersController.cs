@@ -96,7 +96,7 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login([Bind("Id,Username,Email,Password")] User user)
+        public IActionResult Login([Bind("Id,Username,Email,Password,Product")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -149,6 +149,7 @@ namespace WanoSivuv3.Controllers
         // GET: Users/Register
         public IActionResult Register()
         {
+            ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             return View();
         }
 
@@ -157,12 +158,13 @@ namespace WanoSivuv3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("Id,Username,Email,Password")] User user)
+        public async Task<IActionResult> Register([Bind("Id,Username,Email,Password,ProductId")] User user)
         {
             if (ModelState.IsValid)
             {
                 var q = _context.User.FirstOrDefault(u => u.Username == user.Username);
-                if (q == null)
+                var p = _context.User.FirstOrDefault(u => u.ProductId == user.ProductId);
+                if (q == null && p == null)
                 {
                     _context.Add(user);
                     await _context.SaveChangesAsync();
@@ -175,6 +177,7 @@ namespace WanoSivuv3.Controllers
                 {
                     ViewData["Error"] = "Invalid username";
                 }
+                ViewData["Productss"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.Name));
             }
             return View(user);
         }
@@ -195,6 +198,15 @@ namespace WanoSivuv3.Controllers
                 join info in _context.UserInfo on user.Id equals info.UserId
                 select new UserJoin(user,info);
             return View("Join", await query.ToListAsync());
+        }
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> FavoriteDish()
+        {
+            var query =
+                from prod in _context.Product
+                join user in _context.User on prod.Id equals user.ProductId
+                select new FavoriteDish(user, prod);
+            return View("FavoriteDish", await query.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -260,7 +272,7 @@ namespace WanoSivuv3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,Password,Type")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,Password,Type,Product")] User user)
         {
             if (id != user.Id)
             {
@@ -332,6 +344,13 @@ namespace WanoSivuv3.Controllers
         public UserInfo ui { get; set; }
 
         public UserJoin(User u, UserInfo ui) { this.u = u; this.ui = ui; }
+    }
+    public class FavoriteDish
+    {
+        public User u { get; set; }
+        public Product pro { get; set; }
+
+        public FavoriteDish(User u, Product ui) { this.u = u; this.pro = ui; }
     }
     /*public IActionResult Statistics()
      {

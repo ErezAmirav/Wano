@@ -34,5 +34,6 @@ namespace WanoSivuv3.Models
         public int CategoryId { get; set; }
         [Display(Name = "Tags")]
         public List<Tags> myTags { get; set; }
+        public User User { get; set; }
     }
 }
