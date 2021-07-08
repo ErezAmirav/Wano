@@ -8,76 +8,80 @@
 
 </head>
 <br />
+
 <div class="centersearch">
     <h2 class="ourTitle">Our</h2>
     <h1 class="menuTitle">MENU</h1>
 
-    <form asp-action="Search">
-        <input name="queryN" placeholder="Search" class="searchbar" />
-        <input type="submit" value="Search" class="searchButton" />
-    </form>
-    <form asp-action="advSearch">
-        <label>Product name:</label>
-        <input type="text" id="queryP" name="queryP" required min="1" />
-        <label>Category name:</label>
-        <select type="text" id="queryC" name="queryC" required>
-            <option value=""> All </option>
-            <option value="Starters"> Starters </option>
-            <option value="Sushi"> Sushi </option>
-            <option value="Meat"> Meat </option>
-            <option value="From the sea"> From the sea </option>
-            <option value="Noodles"> Noodles </option>
-            <option value="Salads"> Salads </option>
-            <option value="Desserts"> Desserts </option>
-        </select>
-        <label>Price range:</label>
-        <select type="text" id="queryM" name="queryM" required>
-            <option value="40"> 0-40 </option>
-            <option value="60"> 0-60 </option>
-            <option value="80"> 0-80 </option>
-            <option value="100"> 0-100 </option>
-            <option value="101+"> 300 </option>
-        </select>
-        <input type="submit" value="Search" class="searchButton" />
-    </form>
-</div>
-<div class="menu-btns">
-    <form asp-action="Buttom"> <button value="" class="menu-btn active-btn" id="allCat">All</button></form>
-    <form asp-action="Buttom"> <button value="Starters" type="submit" class="menu-btn" name="ctN">Starters</button></form>
-    <form asp-action="Buttom"> <button value="Sushi" type="submit" class="menu-btn" name="ctN">Sushi</button></form>
-    <form asp-action="Buttom"> <button value="Meat" type="submit" class="menu-btn" name="ctN">Meat</button></form>
-    <form asp-action="Buttom"> <button value="From the sea" type="submit" class="menu-btn" name="ctN">From the Sea</button></form>
-    <form asp-action="Buttom"> <button value="Noodles" type="submit" class="menu-btn" name="ctN">Noodles</button></form>
-    <form asp-action="Buttom"> <button value="Salads" type="submit" class="menu-btn" name="ctN">Salads</button></form>
-    <form asp-action="Buttom"> <button value="Desserts" type="submit" class="menu-btn" name="ctN">Desserts</button></form>
-</div>
-<table class="table">
+    <div class="text-center">
 
-    <tbody class="food-items">
-        @foreach (var item in Model)
-        {
-<tr>
-    <td>
-        <div class="container">
-            <div class="row">
-                <div id="productIdo" class="card text-center">
-                    <img src="@item.Image" width="100" />
-                </div>
-            </div>
-        </div>
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Price)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Desc)
-    </td>
-</tr>
-}
-    </tbody>
-</table>
-<br />
+        <form asp-action="Search">
+            <input name="queryN" placeholder="Search" class="searchbar" />
+            <input type="submit" value="Search" class="searchButton" />
+        </form>
+        <form asp-action="advSearch">
+            <input type="text" id="queryP" name="queryP" required min="1" placeholder="Advanced Search" />
+
+            <select type="text" id="queryC" name="queryC" required>
+                <option value=""> Choose Category </option>
+                <option value="Starters"> Starters </option>
+                <option value="Sushi"> Sushi </option>
+                <option value="Meat"> Meat </option>
+                <option value="From the sea"> From the sea </option>
+                <option value="Noodles"> Noodles </option>
+                <option value="Salads"> Salads </option>
+                <option value="Desserts"> Desserts </option>
+            </select>
+
+            <select type="text" id="queryM" name="queryM" required>
+                <option value=""> Maximum Price </option>
+                <option value="40"> 0-40 </option>
+                <option value="60"> 0-60 </option>
+                <option value="80"> 0-80 </option>
+                <option value="100"> 0-100 </option>
+                <option value="300"> 300 </option>
+            </select>
+            <input type="submit" value="Search" class="searchButton" />
+        </form>
+    </div>
+</div>
+    <div class="menu-btns">
+        <form asp-action="Buttom"> <button value="" class="menu-btn active-btn" id="allCat">All</button></form>
+        <form asp-action="Buttom"> <button value="Starters" type="submit" class="menu-btn" name="ctN">Starters</button></form>
+        <form asp-action="Buttom"> <button value="Sushi" type="submit" class="menu-btn" name="ctN">Sushi</button></form>
+        <form asp-action="Buttom"> <button value="Meat" type="submit" class="menu-btn" name="ctN">Meat</button></form>
+        <form asp-action="Buttom"> <button value="From the sea" type="submit" class="menu-btn" name="ctN">From the Sea</button></form>
+        <form asp-action="Buttom"> <button value="Noodles" type="submit" class="menu-btn" name="ctN">Noodles</button></form>
+        <form asp-action="Buttom"> <button value="Salads" type="submit" class="menu-btn" name="ctN">Salads</button></form>
+        <form asp-action="Buttom"> <button value="Desserts" type="submit" class="menu-btn" name="ctN">Desserts</button></form>
+    </div>
+    <table class="table">
+
+        <tbody class="food-items">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div id="productIdo" class="card text-center">
+                                    <img src="@item.Image" width="100" />
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Desc)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
 
