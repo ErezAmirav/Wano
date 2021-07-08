@@ -62,5 +62,9 @@ namespace WanoSivuv3.Controllers
         {
             return View();
         }
+        public IActionResult Analytics()
+        {
+            return View();
+        }
     }
 }
