@@ -37,7 +37,7 @@
                     @if (Context.User.IsInRole("Admin"))
                     {
                         <li><a asp-controller="Products" asp-action="Index">Products<span class="underline"></span></a></li>
-                        <li><a asp-controller="Home" asp-action="Analytics">Analytics<span class="underline"></span></a></li>
+                        <li><a asp-controller="Users" asp-action="Statistics">Statictics<span class="underline"></span></a></li>
                         <li><a asp-controller="Users" asp-action="Index">Manager<span class="underline"></span></a></li>
                     }
                     @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)

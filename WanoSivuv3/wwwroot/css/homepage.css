@@ -324,7 +324,6 @@ header {
     .about-us .image, .reservation .image {
         margin-left: 20px;
     }
-/*End About-Us*/
 
 /*Start Recipes*/
 .recipes .image {
@@ -530,75 +529,6 @@ footer {
         }
 
 
-/*Start Contact Page*/
-.contact-header {
-    background-image: url("https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988526/contact-food.jpg");
-    height: 40vh;
-}
-
-.contact {
-    padding: 78px 40px;
-}
-
-    .contact > div {
-        flex: 50%;
-    }
-
-    .contact .text p {
-        margin-bottom: 30px;
-    }
-
-    .contact .text i {
-        width: 50px;
-        height: 50px;
-        background-color: #000;
-        border-radius: 50%;
-        line-height: 48px;
-        font-size: 24px;
-    }
-
-    .contact .text h2 {
-        font-family: source_sans_problack, sans-serif;
-        font-size: 24px;
-        color: #262626;
-        letter-spacing: 2.4px;
-        margin-bottom: 20px;
-    }
-
-    .contact .form {
-        margin-left: 48px;
-    }
-
-        .contact .form form label {
-            margin-bottom: 5px;
-            color: #515151;
-        }
-
-        .contact .form form input, .contact .form form textarea {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 24px;
-            border-radius: 5px;
-            border: 2px solid #D8D8D8;
-            outline: none;
-        }
-
-            .contact .form form input:focus, .contact .form form textarea:focus {
-                border-color: #a96700;
-                box-shadow: 0 1px 1px #737373;
-            }
-
-        .contact .form form textarea {
-            height: 212px;
-            resize: none;
-        }
-
-        .contact .form form button {
-            background-color: #262526;
-            padding: 12px 30px;
-            font-size: 12px;
-        }
 
 /*Start Home Page Responsive*/
 
@@ -714,9 +644,6 @@ footer {
         display: block;
     }
 
-    footer .social-media {
-        margin-bottom: 40px;
-    }
 
     .copyright ul {
         display: block;
