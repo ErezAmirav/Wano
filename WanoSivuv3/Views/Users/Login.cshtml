@@ -2,13 +2,9 @@
 
 @{
     ViewData["Title"] = "Login";
-    //Layout = "_LoginLayout";
 }
 <head><link rel="stylesheet" href="~/css/loginpage.css"></head>
-
 <hr />
-
-
 <div id="login-box">
     <div class="left">
         <h1>Login</h1>
@@ -17,8 +13,6 @@
             <input asp-for="Username" class="form-control" placeholder="Username" />
             <input asp-for="Password" class="form-control" placeholder="Password" />
             <input type="submit" value="Login" class="btn btn-primary" />
-            
-            
 
             <div>
                 <br />
@@ -33,13 +27,6 @@
             <div class="text-danger">@ViewBag.Error </div>
         }
     </div>
-
-    <div class="right">
-        <br /><br /><br /><br /><br /><br />
-        <button class="social-signin facebook">Log in with facebook</button>
-        
-    </div>
-    <div class="or">OR</div>
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
