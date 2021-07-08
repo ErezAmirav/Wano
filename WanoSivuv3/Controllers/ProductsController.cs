@@ -40,6 +40,19 @@ namespace WanoSivuv3.Controllers
                                     (queryN == null) || (p.Desc.Contains(queryN)));
             return View("Menu",await WanoSivuv3Context.ToListAsync());
         }
+        public async Task<IActionResult> advSearch(string queryP, string queryC, string queryM)
+        {
+
+            //var WanoSivuv3Context = _context.Product.Include(c => c.Category).Include(t => t.myTags).Where(p => (p.Name.Contains(queryP)
+            //                        && p.Category.Equals(queryC) && p.myTags.Equals(queryT)) ||
+            //                        (queryP == null));
+           // int p = Int32.Parse(queryM);
+            var WanoSivuv3Context = _context.Product.Include(a => a.Category).Where(a => 
+                                    (a.Name.Contains(queryP) || a.Desc.Contains(queryP)) 
+                                    && a.Category.Name.Equals(queryC)
+                                    && a.Price <= (Int32.Parse(queryM)));
+            return View("Menu", await WanoSivuv3Context.ToListAsync());
+        }
         public async Task<IActionResult> Buttom(string ctN)
         {
             var WanoSivuv3Context = _context.Product.Include(c => c.Category).Where(p => p.Category.Name.Equals(ctN) ||

@@ -16,6 +16,30 @@
         <input name="queryN" placeholder="Search" class="searchbar" />
         <input type="submit" value="Search" class="searchButton" />
     </form>
+    <form asp-action="advSearch">
+        <label>Product name:</label>
+        <input type="text" id="queryP" name="queryP" required min="1" />
+        <label>Category name:</label>
+        <select type="text" id="queryC" name="queryC" required>
+            <option value=""> All </option>
+            <option value="Starters"> Starters </option>
+            <option value="Sushi"> Sushi </option>
+            <option value="Meat"> Meat </option>
+            <option value="From the sea"> From the sea </option>
+            <option value="Noodles"> Noodles </option>
+            <option value="Salads"> Salads </option>
+            <option value="Desserts"> Desserts </option>
+        </select>
+        <label>Price range:</label>
+        <select type="text" id="queryM" name="queryM" required>
+            <option value="40"> 0-40 </option>
+            <option value="60"> 0-60 </option>
+            <option value="80"> 0-80 </option>
+            <option value="100"> 0-100 </option>
+            <option value="101+"> 300 </option>
+        </select>
+        <input type="submit" value="Search" class="searchButton" />
+    </form>
 </div>
 <div class="menu-btns">
     <form asp-action="Buttom"> <button value="" class="menu-btn active-btn" id="allCat">All</button></form>
